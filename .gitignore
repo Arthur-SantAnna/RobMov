@@ -1,0 +1,52 @@
+# ==========================================
+# ROS 2 / Colcon (Compilação e Instalação)
+# ==========================================
+install/
+build/
+log/
+
+# ==========================================
+# Python (Launch files, nós e testes)
+# ==========================================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.oneself/
+.workspace/
+*.egg-info/
+
+# ==========================================
+# C++ / Binários compilados
+# ==========================================
+*.o
+*.so
+*.a
+*.out
+
+# ==========================================
+# ROS 2 Bags (Logs de Sensores e Testes)
+# ==========================================
+# Rosbags acumulam GBs de dados rapidamente e nunca devem ir para o Git
+*.db3
+*.mcap
+# Ignora pastas de gravação padrão do rosbag2
+rosbag2_*/
+
+# ==========================================
+# Simuladores e Ambientes (Gazebo / Ignition / Isaac)
+# ==========================================
+*.log
+*.sqlite
+.gazebo/
+
+# ==========================================
+# IDEs e Sistema Operacional
+# ==========================================
+.vscode/
+.idea/
+.qtcreator/
+*.user
+.DS_Store
+Thumbs.db
