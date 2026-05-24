@@ -21,6 +21,9 @@
         <child link="lidar"/>
         <origin xyz="0 0 0.225" rpy="0 0 0"/>
     </joint>
+    <gazebo reference="base_lidar_joint">
+        <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
     <gazebo reference="lidar">
         <sensor name="laser" type="gpu_lidar">
             <pose> 0 0 0 0 0 0 </pose>
