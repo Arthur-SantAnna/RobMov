@@ -4,6 +4,7 @@
     
     <node pkg="robot_state_publisher" exec="robot_state_publisher">
         <param name="robot_description" value="$(command 'xacro $(var urdf_path)')" />
+        <param name="use_sim_time" value="true" />
     </node>
     
     <include file="$(find-pkg-share ros_gz_sim)/launch/gz_sim.launch.py">
@@ -14,7 +15,11 @@
     
     <node pkg="ros_gz_bridge" exec="parameter_bridge" 
           args="/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist /odom@nav_msgs/msg/Odometry[gz.msgs.Odometry /tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V /scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan /joint_states@sensor_msgs/msg/JointState[gz.msgs.Model" 
-          output="screen" />
+          output="screen">
+        <param name="use_sim_time" value="true" />
+    </node>
           
-    <node pkg="rviz2" exec="rviz2" output="screen" args="-d $(var rviz_config_path)" />
+    <node pkg="rviz2" exec="rviz2" output="screen" args="-d $(var rviz_config_path)">
+        <param name="use_sim_time" value="true" />
+    </node>
 </launch>
