@@ -21,4 +21,26 @@
         <child link="lidar"/>
         <origin xyz="0 0 0.225" rpy="0 0 0"/>
     </joint>
+    <gazebo reference="lidar">
+        <sensor name="laser" type="gpu_lidar">
+            <pose> 0 0 0 0 0 0 </pose>
+            <visualize>true</visualize>
+            <update_rate>10</update_rate>
+            <topic>/scan</topic>
+            <gz_frame_id>lidar</gz_frame_id>
+            <lidar>
+                <scan>
+                    <horizontal>
+                        <samples>360</samples>
+                        <min_angle>-3.14</min_angle>
+                        <max_angle>3.14</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                    <min>0.3</min>
+                    <max>12</max>
+                </range>
+            </lidar>
+        </sensor>
+    </gazebo>
 </robot>

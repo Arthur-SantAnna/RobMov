@@ -1,0 +1,30 @@
+<launch>
+<!--Arthur Sant'Anna de Carvalho Santos-->
+<!--Bernardo Serravalle Resende-->
+    <let name="urdf_path" value="$(find-pkg-share my_robot_description)/urdf/my_robot.urdf.xacro" />
+    <let name="rviz_config_path" value="$(find-pkg-share my_robot_bringup)/rviz/urdf_config.rviz" />
+    
+    <node pkg="robot_state_publisher" exec="robot_state_publisher">
+        <param name="robot_description" value="$(command 'xacro $(var urdf_path)')" />
+        <param name="use_sim_time" value="true" />
+    </node>
+    
+    <node pkg="joint_state_publisher" exec="joint_state_publisher">
+        <param name="use_sim_time" value="true" />
+    </node>
+    
+    <include file="$(find-pkg-share ros_gz_sim)/launch/gz_sim.launch.py">
+        <arg name="gz_args" value="-r $(find-pkg-share my_robot_bringup)/worlds/test_world.world" />
+    </include>
+    
+    <node pkg="ros_gz_sim" exec="create" args="-topic /robot_description -name my_robot -z 0.15" />
+    
+    <node pkg="ros_gz_bridge" exec="parameter_bridge" 
+          args="/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock /cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist /odom@nav_msgs/msg/Odometry[gz.msgs.Odometry /tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V /scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan" 
+          output="screen">
+    </node>
+          
+    <node pkg="rviz2" exec="rviz2" output="screen" args="-d $(var rviz_config_path)">
+        <param name="use_sim_time" value="true" />
+    </node>
+</launch>

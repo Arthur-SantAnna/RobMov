@@ -1,4 +1,6 @@
 <?xml version="1.0"?>
+<!--Arthur Sant'Anna de Carvalho Santos-->
+<!--Bernardo Serravalle Resende-->
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
     <xacro:property name="base_length" value="0.6" />
