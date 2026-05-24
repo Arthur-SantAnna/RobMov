@@ -26,8 +26,7 @@
             <pose> 0 0 0 0 0 0 </pose>
             <visualize>true</visualize>
             <update_rate>10</update_rate>
-            <topic>scan</topic>
-            <gz_frame_id>lidar</gz_frame_id>
+            <topic>/scan</topic>
             <lidar>
                 <scan>
                     <horizontal>
