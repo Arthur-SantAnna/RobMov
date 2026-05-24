@@ -13,7 +13,7 @@
     <node pkg="ros_gz_sim" exec="create" args="-topic robot_description -name my_robot" />
     
     <node pkg="ros_gz_bridge" exec="parameter_bridge" 
-          args="/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist /odom@nav_msgs/msg/Odometry[gz.msgs.Odometry /tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V" 
+          args="/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist /odom@nav_msgs/msg/Odometry[gz.msgs.Odometry /tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V /scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan" 
           output="screen" />
           
     <node pkg="rviz2" exec="rviz2" output="screen" args="-d $(var rviz_config_path)" />
